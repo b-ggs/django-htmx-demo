@@ -22,8 +22,16 @@
         <meta property="twitter:description" content="" />
         <meta property="twitter:image" content="" />
         {% endcomment %}
+
+        {% load static %}
+        <script src="{% static 'dist/htmx.min.js' %}" defer></script>
     </head>
     <body>
+        <div hx-boost="true">
+            <a href="{% url 'index' %}">Home</a>
+            <a href="{% url 'about' %}">About</a>
+        </div>
+
         {% block content %}{% endblock content %}
     </body>
 </html>

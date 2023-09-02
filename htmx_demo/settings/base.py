@@ -31,6 +31,8 @@ INSTALLED_APPS = [
     "htmx_demo.users",
     # Third-party apps
     "django_extensions",
+    "django_htmx",
+    "whitenoise.runserver_nostatic",
     # Django core apps
     "django.contrib.admin",
     "django.contrib.auth",
@@ -53,6 +55,7 @@ MIDDLEWARE = [
     # https://devcenter.heroku.com/articles/django-assets
     # https://warehouse.python.org/project/whitenoise/
     "whitenoise.middleware.WhiteNoiseMiddleware",
+    "django_htmx.middleware.HtmxMiddleware",
 ]
 
 ROOT_URLCONF = "htmx_demo.urls"
@@ -164,7 +167,11 @@ STATIC_URL = "/static/"
 # https://devcenter.heroku.com/articles/django-assets
 # https://warehouse.python.org/project/whitenoise/
 
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+STORAGES = {
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

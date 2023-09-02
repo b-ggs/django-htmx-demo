@@ -14,3 +14,6 @@ class IndexView(TemplateView):
             "django_version": get_version(),
         }
         return context
+
+class AboutView(TemplateView):
+    template_name = "home/about.html"

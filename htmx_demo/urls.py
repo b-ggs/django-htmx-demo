@@ -1,13 +1,14 @@
 from django.conf import settings
 from django.contrib import admin
 from django.urls import include, path
+from django.conf.urls.static import static
 
 from htmx_demo.home import urls as home_urls
 
 urlpatterns = [
     path("", include(home_urls)),
     path("django-admin/", admin.site.urls),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if hasattr(settings, "SENTRY_TEST_URL_ENABLED") and settings.SENTRY_TEST_URL_ENABLED:
 

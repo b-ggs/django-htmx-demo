@@ -1,7 +1,7 @@
 from django.apps import AppConfig
 
 
-class UsersConfig(AppConfig):
+class UtilsConfig(AppConfig):
     default_auto_field = "django.db.models.BigAutoField"
-    name = "django_template.users"
-    label = "users"
+    name = "htmx_demo.utils"
+    label = "utils"

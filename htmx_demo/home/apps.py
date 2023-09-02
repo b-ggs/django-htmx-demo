@@ -1,7 +1,7 @@
 from django.apps import AppConfig
 
 
-class UtilsConfig(AppConfig):
+class HomeConfig(AppConfig):
     default_auto_field = "django.db.models.BigAutoField"
-    name = "django_template.utils"
-    label = "utils"
+    name = "htmx_demo.home"
+    label = "home"

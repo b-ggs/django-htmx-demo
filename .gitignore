@@ -2,6 +2,6 @@ __pycache__
 .env
 .python-version
 **.dump
-django_template/staticfiles
+htmx_demo/staticfiles
 
 node_modules

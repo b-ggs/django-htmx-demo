@@ -47,3 +47,11 @@ djrun
 ```
 
 Visit https://localhost:8000/ to view the demo.
+
+---
+
+Most the files relevant to the demo can be found in the `htmx_demo.core` Django app.
+
+Static files which are just the small amount of CSS I wrote and the minified HTMX JS can be found in `htmx_demo/staticfiles`.
+
+The base template and a login template can be found in `htmx_demo/templates`.

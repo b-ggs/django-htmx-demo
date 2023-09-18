@@ -20,6 +20,13 @@ Open an interactive shell into the Docker container that contains the Django pro
 make sh
 ```
 
+Run all migrations.
+
+```bash
+# inside `make sh`
+dj migrate
+```
+
 Create a superuser to use with the demo.
 
 ```bash

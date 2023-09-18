@@ -1,0 +1,26 @@
+{% if add_to_cart_success %}
+  <span id="cart-count" hx-swap-oob="true">{{ cart_item_count }}</span>
+{% endif %}
+
+{% if form %}
+  <form hx-post="{% url 'htmx-add-to-cart' product_pk %}" hx-swap="outerHTML" hx-indicator="#spinner-container">
+    {% csrf_token %}
+    {{ form }}
+
+    <div class="control">
+      <button class="button is-primary">Add to Cart</button>
+    </div>
+  </form>
+{% endif %}
+
+{% if add_to_cart_success %}
+  <div class="notification is-primary mt-5">
+    Successfully added to cart!
+  </div>
+{% endif %}
+
+{% if not user.is_authenticated %}
+  <div class="notification is-danger mt-5">
+    Please login to add this item to your cart
+  </div>
+{% endif %}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>{% block title %}{% block subtitle %}{% endblock subtitle %}E-commerce{% endblock title %}</title>
+
+    {% comment %}
+    <meta name="title" content="htmx_demo" />
+    <meta name="description" content="" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="" />
+    <meta property="og:title" content="" />
+    <meta property="og:description" content="" />
+    <meta property="og:image" content="" />
+
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="" />
+    <meta property="twitter:title" content="" />
+    <meta property="twitter:description" content="" />
+    <meta property="twitter:image" content="" />
+    {% endcomment %}
+
+        {% load static %}
+        <script src="{% static 'dist/htmx.min.js' %}" defer></script>
+        <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    </head>
+
+    <body>
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-brand" hx-boost="true" hx-indicator="#spinner-container">
+                    <a href="{% url 'index' %}" class="navbar-item has-text-weight-bold">E-commerce</a>
+                    <a href="{% url 'products' %}" class="navbar-item">Products</a>
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'cart' %}" class="navbar-item">Cart (<span id="cart-count">{{ cart_item_count }}</span>)</a>
+                        <a href="{% url 'logout' %}" class="navbar-item">Logout from {{ user.username }}</a>
+                    {% else %}
+                        <a href="{% url 'login' %}" class="navbar-item">Login</a>
+                    {% endif %}
+                </div>
+            </div>
+        </nav>
+
+        <div id="spinner-container" class="spinner-container">
+            <div id="spinner" class="spinner"></div>
+        </div>
+
+        {% block content %}{% endblock content %}
+    </body>
+
+</html>

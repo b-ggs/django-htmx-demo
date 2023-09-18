@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block subtitle %}Products - {% endblock subtitle %}
+
+{% block content %}
+
+  <section class="section">
+    <div class="container mb-5">
+      <h1 class="title">Products</h1>
+    </div>
+
+    <div class="container" hx-boost="true">
+      <div hx-get="{% url 'products' %}?page=1" hx-trigger="revealed" hx-swap="outerHTML"
+           hx-indicator="#spinner-container"></div>
+    </div>
+  </section>
+
+{% endblock content %}

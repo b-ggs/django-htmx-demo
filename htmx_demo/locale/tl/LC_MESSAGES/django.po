@@ -1,0 +1,11 @@
+#: htmx_demo/home/templates/home/index.html:6
+msgid "Welcome to your new site!"
+msgstr "Maligayang pagdating sa iyong bagong site!"
+
+#: htmx_demo/settings/base.py:109
+msgid "English"
+msgstr "Ingles"
+
+#: htmx_demo/settings/base.py:110
+msgid "Tagalog"
+msgstr ""

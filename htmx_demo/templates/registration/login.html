@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block subtitle %}Login - {% endblock subtitle %}
+
+{% block content %}
+  <section class="section">
+    <div class="container mb-5">
+      <div class="columns is-desktop">
+        <div class="column is-one-quarter">
+          <div class="container mb-5">
+            <h1 class="title">Login</h1>
+          </div>
+          <form method="post" hx-boost="true" hx-indicator="#spinner-container">
+            {% csrf_token %}
+            <div class="has-text-danger">
+              {{ form.non_field_errors }}
+            </div>
+            {% for field in form %}
+              <div class="field">
+                <div class="has-text-danger">
+                  {{ field.errors }}
+                </div>
+                {{ field.label_tag }}
+                <div class="control">
+                  <input class="input" name="{{ field.name }}" type="{{ field.field.widget.input_type }}">
+                </div>
+
+              </div>
+            {% endfor %}
+            <div class="field">
+              <p class="control">
+                <button class="button is-success">
+                  Login
+                </button>
+              </p>
+            </div>
+          </form>
+        </div>
+        <div class="column is-one-half">
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock content %}

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block subtitle %}{{ object.name }} - {% endblock subtitle %}
+
+{% block content %}
+
+  <section class="section">
+    <div class="container mb-5">
+      <div class="columns is-desktop">
+        <div class="column is-one-half">
+          <figure class="image mb-5">
+            <img src="{{ object.image_url }}" />
+          </figure>
+          <h1 class="title">{{ object.name }}</h1>
+          <p>{{ object.description }}</p>
+
+          <div class="mt-5">
+
+            <div hx-get="{% url 'htmx-add-to-cart' object.pk %}" hx-trigger="revealed" hx-swap="outerHTML">
+            </div>
+
+          </div>
+        </div>
+        <div class="column is-one-half">
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+{% endblock content %}

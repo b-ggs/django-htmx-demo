@@ -1,0 +1,12 @@
+__pycache__
+.env
+.python-version
+**.dump
+htmx_demo/staticfiles
+
+Dockerfile
+compose.yml
+README.md
+docs
+
+node_modules

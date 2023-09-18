@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block subtitle %}Cart - {% endblock subtitle %}
+
+{% block content %}
+    <section class="section">
+        <div class="container mb-5">
+            <h1 class="title">Cart</h1>
+        </div>
+
+        <div class="container">
+            <div class="columns is-desktop">
+                <div class="column is-one-third">
+
+                    {% for cart_item in cart_items %}
+                        <article id="cart-item-{{ cart_item.pk }}" class="media">
+                            <figure class="media-left">
+                                <p class="image is-64x64">
+                                    <img src="https://placehold.co/64x64" alt="">
+                                </p>
+                            </figure>
+                            <div class="media-content">
+                                <div class="content">
+                                    <p>
+                                        <span class="has-text-weight-bold">{{ cart_item.product.name }}</span> x{{ cart_item.quantity}}
+                                    </p>
+                                    {% if cart_item.variant %}
+                                        <p>
+                                            Variant: {{ cart_item.variant }}
+                                        </p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="media-right">
+                                <form hx-post="{% url 'cart-delete' cart_item.pk %}" hx-target="#cart-item-{{ cart_item.pk }}" hx-swap="outerHTML" hx-confirm="Are you sure?">
+                                    {% csrf_token %}
+                                    <button class="delete"></button>
+                                </form>
+                            </div>
+                        </article>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock content %}

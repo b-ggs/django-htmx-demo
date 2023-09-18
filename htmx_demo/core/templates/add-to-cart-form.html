@@ -1,0 +1,17 @@
+{% for field in form %}
+  <div class="field">
+    <div class="has-text-danger">
+      {{ field.errors }}
+    </div>
+    {{ field.label_tag }}
+    <div class="control">
+      {% if field.field.widget.input_type == 'select' %}
+        <div class="select">
+      {% endif %}
+      {{ field }}
+      {% if field.field.widget.input_type == 'select' %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+{% endfor %}

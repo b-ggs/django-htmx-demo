@@ -1,0 +1,26 @@
+{% for object_row in object_rows %}
+  <div class="columns is-tablet">
+    {% for product in object_row %}
+      <div class="column is-one-third">
+        <div class="card">
+          <div class="card-image">
+            <figure class="image">
+              <img src="{{ product.image_url }}" />
+            </figure>
+          </div>
+          <div class="card-content">
+            <div class="content">
+              <h2 class="title">{{ product.name }}</h2>
+            </div>
+          </div>
+          <a href="{% url 'product-detail' product.pk %}" class="card-target"></a>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endfor %}
+
+{% if page_obj.has_next %}
+  <div hx-get="{% url 'products' %}?page={{ page_obj.next_page_number|urlencode }}" hx-trigger="revealed" hx-swap="outerHTML"
+       hx-indicator="#spinner-container"></div>
+{% endif %}

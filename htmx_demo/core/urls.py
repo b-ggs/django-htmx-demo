@@ -14,7 +14,7 @@ urlpatterns = [
     path(
         "products/<int:product_pk>/add-to-cart/",
         views.AddToCartView.as_view(),
-        name="htmx-add-to-cart",
+        name="add-to-cart",
     ),
     path("cart/", views.CartView.as_view(), name="cart"),
     path(

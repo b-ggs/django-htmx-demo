@@ -3,7 +3,7 @@
 {% endif %}
 
 {% if form %}
-  <form hx-post="{% url 'htmx-add-to-cart' product_pk %}" hx-swap="outerHTML" hx-indicator="#spinner-container">
+  <form hx-post="{% url 'add-to-cart' product_pk %}" hx-swap="outerHTML" hx-indicator="#spinner-container">
     {% csrf_token %}
     {{ form }}
 
